@@ -34,5 +34,16 @@ PHP based web application built with  [CakePHP](http://www.cakephp.org) framewor
  
  - Doctor can see all his appointments requested by various patients, he can confirm/postpone appointments, Whenever he confirms appointment notification email will be sent to patient whoever requested appointment.
 
-6 . Screenshots
+6 . Some Screenshots
+##### LogIn
+![LogIn](http://i.imgur.com/yzIzqoq.png)
+
+##### Dashboard
+![Dashboard](http://i.imgur.com/yxn3VYD.png)
+
+##### Appointment pages
+![Appt1](http://i.imgur.com/Z6Uy4uJ.png)
+
+![Appt2](http://i.imgur.com/ciKHmZR.png)
+
 
