@@ -13,6 +13,7 @@ PHP based web application built with  [CakePHP](http://www.cakephp.org) framewor
     ```
     Import database file doc_patient_test.sql located at root directory of this projects
     ```
+    Make sure logs and tmp folders are writable
 3. Test credentials
 
    ```
