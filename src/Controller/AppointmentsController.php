@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Mailer\MailerAwareTrait;
 
 /**
  * Appointments Controller
@@ -10,7 +11,9 @@ use App\Controller\AppController;
  */
 class AppointmentsController extends AppController
 {
-
+    
+    use MailerAwareTrait;
+    
     /**
      * Index method
      *
@@ -64,6 +67,10 @@ class AppointmentsController extends AppController
                 $appointment->patient_id = $this->Auth->user('id');
             }
             if ($this->Appointments->save($appointment)) {
+                //Send Appointment request email to doctor
+                $appointment->doctor = $this->Appointments->Doctors->get($appointment->doctor_id);
+                $appointment->patient = $this->Appointments->Patients->get($appointment->patient_id);
+                $this->getMailer('Appointment')->send('appointmentSetNotify', [$appointment]);
                 $this->Flash->success(__('The appointment has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -99,11 +106,11 @@ class AppointmentsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $appointment = $this->Appointments->patchEntity($appointment, $this->request->data);
             if ($this->Appointments->save($appointment)) {
-                $this->Flash->success(__('The appointment has been saved.'));
+                $this->Flash->success(__('The appointment has been postponed.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The appointment could not be saved. Please, try again.'));
+                $this->Flash->error(__('The appointment could not be modified. Please, try again.'));
             }
         }
         $patients = $this->_userLists(ROLE_PATIENT);
@@ -138,13 +145,15 @@ class AppointmentsController extends AppController
      * @param int $status 0 => false,  1 => true
      */
     public function toggleConfirmed($id, $status){
-        $appt = $this->Appointments->get($id);
-        $appt->is_confirmed = (int) $status == 1 ? true : false;
-        if ($this->Appointments->save($appt)){
+        $appointment = $this->Appointments->findById($id)->contain(['Patients', 'Doctors'])->firstOrFail();
+        $appointment->is_confirmed = (int) $status == 1 ? true : false;
+        if ($this->Appointments->save($appointment)){
             $this->Flash->success(__('The appointment confirm status has been modified.'));
         } else {
             $this->Flash->error(__('Something went wrong. Please, try again.'));
         }
+        //Send Confirmed notification email to Patient
+        $this->getMailer('Appointment')->send('appointmentConfirmNotify', [$appointment]);
         
         return $this->redirect(['action' => 'index']);
     }

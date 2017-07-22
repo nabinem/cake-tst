@@ -7,28 +7,19 @@
                     <table width="580" style="margin:0 auto;color:#73879C;">
                         <tr>
                             <td>
-                                <p style="font-size: 18px;line-height: 21px;">New Task assigned to you.<br></p>
-                                
-                                <h2>
-                                    <?php echo h($task->title); ?>
-                                </h2>
+                                <p style="font-size: 18px;line-height: 21px;">Your Requested Appointment has been  approved by Doctor: 
+                                    <b><?php echo $appointment->doctor->full_name; ?></b>.<br></p>
                                 <div style="background: #f2f2f2;border-width: 1px 1px 2px 5px;border-style: solid;border-color: #E6E9ED;border-radius: 3px;background-color: #FFF;padding: 10px !important;border-left-color: #1ABC9C;">
-                                    Priority: <b><?php echo isset($priorities[$task->priority]) ? $priorities[$task->priority] : ''; ?></b>
-                                    &nbsp; &nbsp;  &nbsp; &nbsp; Due on: <b><?= h($task->due_date_formatted) ?></b>
+                                    Requested Appointment Date: 
+                                    &nbsp; &nbsp;  &nbsp; &nbsp; <b><?= h($appointment->appt_date) ?></b>
                                     <br/><br/>
-                                    <?php if(!empty($task->users)): ?>
-                                                Assigned Staffs: 
-                                                <b><?php echo implode(', ', array_map(function ($u){ return $u->full_name; }, $task->users)); ?></b>
-                                            <br/><br/>
-                                        <?php endif; ?>
                                     <?= 
-                                        'To view this task, please follow this link : '.
+                                        'To view this appointment, please follow this link : '.
                                         $this->Html->link(
                                             'here',
                                             [
-                                                'controller' => 'Tasks',
-                                                'action' => 'view',
-                                                $task->id,
+                                                'controller' => 'Appointments',
+                                                'action' => 'index',
                                                 '_full' => true
                                             ],
                                             [
@@ -38,11 +29,6 @@
                                      ?>
                                     <br />
                                     <br />
-                                     <?php if (!empty($task->description)): ?>
-                                            <strong><u>Description:</u></strong><br>
-                                                <?php echo $task->description; ?> 
-                                            <br>
-                                     <?php endif; ?>
                                 </div>
                             </td>
                             <td class="expander"></td>
