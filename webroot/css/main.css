@@ -1,0 +1,187 @@
+@font-face {
+    font-family: alluraRegular;
+    src: url(../fonts/Allura-Regular.ttf);
+}
+.registration_form{opacity: 100;} .bold{font-weight: bold;}
+.padl0{padding-left: 0;} .padr0{padding-right: 0;} .margr0{margin-right: 0;}
+.menu_section>ul { margin-top: 40px;}
+.control-label .required, .form-group .required {
+    color: #e02222;
+    font-size: 12px;
+    padding-left: 2px;
+}
+.error-message{color: #a94442;}
+.index_page .x_title h2{float: none;}
+.left-text-align, .form-horizontal .left-text-align{text-align: left;}
+#login_account_form .form-control.has-feedback-left {padding-left: 52px;}
+.form-control-feedback.left{left: 5px;}
+#affiliate-signup-form .form-control.has-feedback-left{padding-left: 45px;}
+#affiliate-signup-form .has-feedback .form-control {padding-right: 42.5px;}
+.form-control-feedback.firstname{left: 13px;}
+#affiliate-signup-form .form-control{margin-bottom: 8px;}
+#affiliate-signup-form .select2-selection__rendered{text-align: left; margin-left: 38px;}
+#affiliate-signup-form .error-message{text-align: left;}
+.paginate_custom a {
+    padding: 6px 9px !important;
+    background: #ddd !important;
+    border-color: #ddd !important;
+}
+.paginate_custom .pagination{margin-top: 0;}
+.products_checkboxes_cont .checkbox{display: inline-block; padding: 4px;}
+.products_checkboxes_cont .checkbox label{padding-left: 0;}
+.link{cursor: pointer;}
+.text_right{text-align: right;}
+.initial_hide{display: none;}
+.unstarred:hover{color: #e7e7e7;} .starred{color: #ffb220;} .unstarred{color: #fff;}
+input[type="text"].spinner, input[type="password"].spinner, input[type="datetime"].spinner, input[type="datetime-local"].spinner, input[type="date"].spinner, input[type="month"].spinner, input[type="time"].spinner, input[type="week"].spinner, input[type="number"].spinner, input[type="email"].spinner, input[type="url"].spinner, input[type="search"].spinner, input[type="tel"].spinner, input[type="color"].spinner {
+    background-image: url(../img/input-spinner.gif) !important;
+    background-repeat: no-repeat;
+    background-position: right 8px;
+}
+.label.pharmlead_status, .status_text{line-height: 20px;padding: .2em .6em .3em; border-radius: .25em; 
+             background-color: #d2d6de; color: #444;white-space: nowrap;font-size: 90%;}
+.status_text_4{background-color: #ffff00; color: #5A738;}
+.status_text_1, .status_text_6, .status_text_8, .status_text_13, .task_status_2{
+    background-color: #00a65a;
+    color: #fff;}
+.status_text_2, .status_text_14,.status_text_7{
+        background-color: #dd4b39;
+    color: #fff;}
+.status_text_3,.status_text_9,.status_text_11,.status_text_15,.status_text_17{color: #8a6d3b;}
+.status_pending, .status_text_0, .task_status_0, .label.pharmlead_status_0{background-color: #FFA500;
+    color: #fff;}
+.radio-inline{font-size: 14px;}
+/*light grey green font*/
+.status_text_32,.status_text_40, .status_text_41, .status_text_42,.status_text_43,
+.status_text_44,.status_text_45{color: #00a65a; background-color: #D3D3D3;}
+/**/
+.status_text_62{background-color: #D3D3D3; color: #800080;}
+/*Purple with white font*/
+.status_text_61{background-color: #800080; color: #fff;}
+/*light pink w/ white font*/
+.status_text_63{background-color: #FFB6C1;  color: #fff;}
+/*dark Grey with red font*/
+.status_text_26, .status_text_11, .status_text_29{background-color: #A9A9A9; color: #ff0000;}
+/*Black with white font*/
+.status_text_64{background-color: #000; color: #fff;}
+/*orange/black font*/
+.status_text_28, .status_text_34,  .status_text_35, 
+.status_text_36, .status_text_37,  .status_text_38,  .status_text_39,.status_text_58{
+    background-color: #FFA500; color: #000;
+}
+/*orange/white font*/
+.status_text_67, .label.pharmlead_status_3{background-color: #FFA500; color: #FFF;}
+/*green/black font*/
+.status_text_46,  .status_text_48, 
+.status_text_50, .status_text_52,  .status_text_54,  .status_text_56,.status_text_59{
+    background-color: #00FF00; color: #000;
+}
+/*black/red font*/
+.label.pharmlead_status_4{background-color: #000; color: #FF0000;}
+/*orange/red font*/
+.status_text_27{
+    background-color: #FFA500; color: #FF0000;
+}
+/*green/white font*/ 
+.status_text_68{
+    background-color: rgba(38,185,154,0.88); color: #fff;
+}
+/* (Red/ black font)*/
+.status_text_47,  .status_text_49, 
+.status_text_51, .status_text_53,  .status_text_55,  .status_text_57,.status_text_60{
+    background-color: #FF0000; color: #000;
+}
+/*red/white font*/ 
+.status_text_69, .label.pharmlead_status_2{
+    background-color: #f00; color: #fff;
+}
+/*yelllow/black font*/ 
+.status_text_65, .status_text_66, .label.pharmlead_status_1{
+    background-color: #FFFF00; color: #000;
+}
+.center-loading{
+    background: url('../img/loading.gif') no-repeat center;
+    height: 100px; width: 100px;
+    display: inline-block;
+    top: 20%; left: 40%;
+    position: absolute;
+}
+@media only screen and (max-width: 890px) {
+    #pharmlead_detail_tabs>li.active, #lead_detail_tabs>li.active{margin-top: 0;}
+    #pharmlead_detail_tabs>li, #lead_detail_tabs>li {margin-top: 0; float: none;}
+    #pharmlead_detail_tabs, #lead_detail_tabs{height: auto;}
+}
+.initial_hide{display: none;}
+#tab_consultant .panel_toolbox li{float: right;}
+.head_fixed_table{position: fixed; top: 0px; display:none;}
+.table-striped{background-color: #eee;}
+.table-responsive .table thead th{white-space: nowrap;}
+#tab_consultant_cont .x_title h2{font-size: 22px;}
+.portlet .portlet-title{padding: 0 10px;}
+.portlet {margin-top: 0; margin-bottom: 25px; padding: 0;  border-radius: 4px;}
+.portlet{border: 1px solid #ddd; border-top: 0; width: 100%;}
+.portlet>.portlet-title {background-color: #F5F7FA; color: #5A738E; cursor: pointer; width: auto;}
+.portlet>.portlet-body {background-color: #fff; padding: 15px;}
+.portlet>.portlet-title>.caption_title {
+    padding: 11px 0 9px; float: left; display: inline-block;
+    font-size: 18px; line-height: 18px; padding: 11px 0 9px;
+}
+.portlet .portlet-title:after{
+    clear: both;
+    content: " ";
+    display: table;
+}
+.medinfo_title .patient_name{line-height: 30px; font-size: 20px;}
+.portlet>.portlet-title>.tools {float: right; display: inline-block; padding: 12px 0 8px;}
+#tab_health .portlet-title>.caption_title {font-size: 22px; line-height: 22px;}
+ #patient_medhistory_form label{}
+ #patient_medhistory_form hr {margin: 5px 0;}
+.icheckbox_flat-green.checked.disabled{background-position: -22px 0;}
+.bootstrap-switch.bootstrap-switch-disabled .bootstrap-switch-handle-off, 
+.bootstrap-switch.bootstrap-switch-disabled .bootstrap-switch-handle-on, 
+.bootstrap-switch.bootstrap-switch-disabled .bootstrap-switch-label, 
+.bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-handle-off, 
+.bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-handle-on, 
+.bootstrap-switch.bootstrap-switch-indeterminate .bootstrap-switch-label, 
+.bootstrap-switch.bootstrap-switch-readonly .bootstrap-switch-handle-off, 
+.bootstrap-switch.bootstrap-switch-readonly .bootstrap-switch-handle-on, 
+.bootstrap-switch.bootstrap-switch-readonly .bootstrap-switch-label{opacity: 1;}
+.red-text{color: #a94442 !important;}
+#horiz_topmenu_toggle  i.fa-bars {font-size: 26px;}
+#horiz_topmenu .nav>.active>a{background-color: #D9DEE4;}
+#horiz_topmenu li  i.fa-chevron-down{font-size: 12px;}
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:hover{background-color: #f5f5f5; color: #515356;}
+@media (max-width: 991px){
+   .navbar-collapse.pull-left {
+        float: none !important;
+    } 
+}
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th,
+.table-borderless > thead > tr > td,
+.table-borderless > thead > tr > th {
+    border: none;
+}
+#calendar .patient, #evt_vw_body .patient, .popover .patient{font-family: alluraRegular;font-size: 19px;}
+#medbasic_pains .pain_input{padding-left: 5px; padding-right: 5px; margin: 0 2px;} 
+#pg_lead_view .x_panel{padding-left: 0; padding-right: 0;}
+#medbasic_pains li{float: left; font-weight: bold;display: block;}
+#medbasic_pains .pain_level{display: inline; width: 48px;}
+.multiselect-container.dropdown-menu{overflow-y: scroll; max-height: 400px;}
+#horiz_topmenu .notes-dropdown.open .dropdown-menu{right: auto; left: 0;}
+ul#recent_notes{list-style: none; padding: 0; margin: 0;}
+#horiz_topmenu .notes-dropdown.open .dropdown-menu.msg_list{width: 500px; padding-right: 12px;}
+#recent_notes{width: 100%;}
+#horiz_topmenu #recent_notes_cont{background: none; margin: 0; padding: 0;}
+.task_priority_text, .task_status_text{font-weight: bold;}
+.task_priority_2, .task_priority_3{color: #fff;background-color: #ac2925;}
+.task_status_check{cursor: pointer;}
+.task_overdue, .task_overdue .task_title{color: #ac2925;}
+tr.task_completed{opacity: 0.4;}
+#vw_task_details img{max-width: 100%;}
+.tooltip{z-index: 99999;}
+th.actions{white-space: nowrap;}
+.text_align_left{text-align: left !important;}
+.action_btns .btn{margin-bottom: 0;}
