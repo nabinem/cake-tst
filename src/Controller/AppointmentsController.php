@@ -18,10 +18,16 @@ class AppointmentsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users', 'Doctors']
-        ];
-        $appointments = $this->paginate($this->Appointments);
+        $query = $this->Appointments->find()->contain(['Patients', 'Doctors']);
+        //For patient only allow to view his appointments
+        if ($this->AuthUser->hasRole(ROLE_PATIENT)){
+           $query->where(['Appointments.patient_id' => $this->Auth->user('id')]);
+        }
+        //For Dcotor only allow to view his appointments
+        if ($this->AuthUser->hasRole(ROLE_DOCTOR)){
+           $query->where(['Appointments.doctor_id' => $this->Auth->user('id')]);
+        }
+        $appointments = $this->paginate($query);
 
         $this->set(compact('appointments'));
         $this->set('_serialize', ['appointments']);
@@ -37,7 +43,7 @@ class AppointmentsController extends AppController
     public function view($id = null)
     {
         $appointment = $this->Appointments->get($id, [
-            'contain' => ['Users', 'Doctors']
+            'contain' => ['Patients', 'Doctors']
         ]);
 
         $this->set('appointment', $appointment);
@@ -54,6 +60,9 @@ class AppointmentsController extends AppController
         $appointment = $this->Appointments->newEntity();
         if ($this->request->is('post')) {
             $appointment = $this->Appointments->patchEntity($appointment, $this->request->data);
+            if ($this->AuthUser->hasRole(ROLE_PATIENT)){
+                $appointment->patient_id = $this->Auth->user('id');
+            }
             if ($this->Appointments->save($appointment)) {
                 $this->Flash->success(__('The appointment has been saved.'));
 
@@ -62,9 +71,9 @@ class AppointmentsController extends AppController
                 $this->Flash->error(__('The appointment could not be saved. Please, try again.'));
             }
         }
-        $users = $this->Appointments->Users->find('list', ['limit' => 200]);
-        $doctors = $this->Appointments->Doctors->find('list', ['limit' => 200]);
-        $this->set(compact('appointment', 'users', 'doctors'));
+        $patients = $this->_userLists(ROLE_PATIENT);
+        $doctors = $this->_userLists(ROLE_DOCTOR);
+        $this->set(compact('appointment', 'doctors', 'patients'));
         $this->set('_serialize', ['appointment']);
     }
 
@@ -77,9 +86,16 @@ class AppointmentsController extends AppController
      */
     public function edit($id = null)
     {
-        $appointment = $this->Appointments->get($id, [
-            'contain' => []
-        ]);
+        $query = $this->Appointments->findById($id);
+        //For patient only allow to view his appointments
+        if ($this->AuthUser->hasRole(ROLE_PATIENT)){
+           $query->where(['Appointments.patient_id' => $this->Auth->user('id')]);
+        }
+        //For Dcotor only allow to view his appointments
+        if ($this->AuthUser->hasRole(ROLE_DOCTOR)){
+           $query->where(['Appointments.doctor_id' => $this->Auth->user('id')]);
+        }
+        $appointment = $query->firstOrFail();
         if ($this->request->is(['patch', 'post', 'put'])) {
             $appointment = $this->Appointments->patchEntity($appointment, $this->request->data);
             if ($this->Appointments->save($appointment)) {
@@ -90,9 +106,9 @@ class AppointmentsController extends AppController
                 $this->Flash->error(__('The appointment could not be saved. Please, try again.'));
             }
         }
-        $users = $this->Appointments->Users->find('list', ['limit' => 200]);
-        $doctors = $this->Appointments->Doctors->find('list', ['limit' => 200]);
-        $this->set(compact('appointment', 'users', 'doctors'));
+        $patients = $this->_userLists(ROLE_PATIENT);
+        $doctors =  $this->_userLists(ROLE_DOCTOR);
+        $this->set(compact('appointment', 'patients', 'doctors'));
         $this->set('_serialize', ['appointment']);
     }
 
@@ -115,4 +131,23 @@ class AppointmentsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    
+    /**
+     * 
+     * @param int $id appointment id
+     * @param int $status 0 => false,  1 => true
+     */
+    public function toggleConfirmed($id, $status){
+        $appt = $this->Appointments->get($id);
+        $appt->is_confirmed = (int) $status == 1 ? true : false;
+        if ($this->Appointments->save($appt)){
+            $this->Flash->success(__('The appointment confirm status has been modified.'));
+        } else {
+            $this->Flash->error(__('Something went wrong. Please, try again.'));
+        }
+        
+        return $this->redirect(['action' => 'index']);
+    }
+    
+    
 }

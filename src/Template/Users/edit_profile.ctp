@@ -17,16 +17,7 @@
                       <?php 
                       echo $this->Form->create($user, ['class' => 'form-horizontal form-label-left', 
                           'templates' => ['inputContainer' => '{{content}}'], 'id' => 'profile-edit-form']) ?>
-                      <?php  if($this->AuthUser->hasRoles([ROLE_PHARMACY, ROLE_TELEMEDCINE])): ?> 
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Company <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <?php echo $this->Form->input('company', [
-                                'div' => false, 'label' => false, 'class' => 'form-control col-md-7 col-xs-12', 'required' => true]); ?>
-                        </div>
-                      </div>
-                      <?php else: ?>
+                      
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">First Name <span class="required">*</span>
                         </label>
@@ -43,7 +34,6 @@
                                 'div' => false, 'label' => false, 'class' => 'form-control col-md-7 col-xs-12', 'required' => true]); ?>
                         </div>
                       </div>
-                      <?php endif; ?>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">User Name <span class="required">*</span>
                         </label>
@@ -60,49 +50,6 @@
                                 'div' => false, 'label' => false, 'class' => 'form-control col-md-7 col-xs-12', 'required' => true]); ?>
                         </div>
                       </div>
-                      <?php if ($this->AuthUser->hasRole(ROLE_AFFILIATE)): ?>
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Address <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <?php echo $this->Form->input('user_profile.address', [
-                                    'div' => false, 'label' => false, 'class' => 'form-control col-md-7 col-xs-12', 'required' => true]); ?>
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">City/Town <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <?php echo $this->Form->input('user_profile.city', [
-                                    'div' => false, 'label' => false, 'class' => 'form-control col-md-7 col-xs-12', 'required' => true]); ?>
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">State <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <?php echo $this->Form->input('user_profile.state', [
-                                    'div' => false, 'label' => false, 'class' => 'form-control col-md-7 col-xs-12', 'required' => true]); ?>
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Zip <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <?php echo $this->Form->input('user_profile.zip', [
-                                    'div' => false, 'label' => false, 'class' => 'form-control col-md-7 col-xs-12', 'required' => true]); ?>
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Country <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <?php echo $this->Form->input('user_profile.country', [
-                                    'options' => Configure::read('countriesIsoName'), 'empty' => 'Select a Country',
-                                    'div' => false, 'label' => false, 'class' => 'form-control col-md-7 col-xs-12 select2_single', 'required' => true]); ?>
-                            </div>
-                        </div>
-                      <?php endif; ?>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">

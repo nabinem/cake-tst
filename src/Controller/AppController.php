@@ -56,7 +56,7 @@ class AppController extends Controller
                 ],
             ],
             'loginRedirect' => [
-                'controller' => 'Dashboards',
+                'controller' => 'Appointments',
                 'action' => 'index'
             ],
             'authorize' => ['TinyAuth.Tiny' => ['autoClearCache' => true]]
@@ -94,5 +94,18 @@ class AppController extends Controller
         $errors = Hash::flatten($valErrors);
         return implode($separator, $errors);
     } 
+    
+    /**
+     * @param role constant - Role id 
+     * List of users
+     */
+    protected function _userLists($role = null) {
+        $this->loadModel('Users');
+        $query = $this->Users->find('list', ['keyField' => 'id', 'valueField' => 'full_name'])->order(['firstname' => 'asc']);
+        if (!empty($role)){
+           $query->where(['role_id' => $role]);
+        }
+        return $query->toArray();
+    }
     
 }

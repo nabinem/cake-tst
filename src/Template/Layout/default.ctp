@@ -23,6 +23,7 @@
         <div class="container body">
             <div class="main_container">
                 <?php echo $this->element('sidebar_navigation'); ?>
+                <?php echo $this->element('top_navigation'); ?>
                 <?= $this->fetch('content') ?> 
                  <!-- footer content -->
                 <footer>

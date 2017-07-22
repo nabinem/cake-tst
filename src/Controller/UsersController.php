@@ -213,9 +213,7 @@ class UsersController extends AppController
      */
     public function editProfile(){
         $id = $this->Auth->user('id');
-        $user = $this->Users->get($id, [
-            'contain' => ['UserProfiles']
-        ]);
+        $user = $this->Users->get($id);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->data, ['validate' => 'editProfile']);
             if ($this->Users->save($user)) {

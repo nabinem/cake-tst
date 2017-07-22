@@ -24,27 +24,29 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-                    <li class="<?php echo $this->Common->getLinkActiveClass('Appointments', ['index', 'add', 'edit']); ?>">
-                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                    <li class="" style="margin-bottom: 50px;">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-book"></i> Appointments <i class="fa fa-chevron-down"></i></a>
                             <ul class="dropdown-menu">
-                              <li class="<?php echo $this->Common->getLinkActiveClass('Appointments', 'index'); ?>">
+                              <li class="active">
                                   <a href="<?php echo $this->Url->build(['controller' => 'Appointments', 'action' => 'index']); ?>">List Appointments</a>
                               </li>
+                              <?php if ($this->AuthUser->hasAccess(['controller' => 'Appointments', 'action' => 'add'])): ?>
                               <li class="<?php echo $this->Common->getLinkActiveClass('Appointments', 'add'); ?>">
                                   <a href="<?php echo $this->Url->build(['controller' => 'Appointments', 'action' => 'add']); ?>">Set New Appointment</a>
                               </li>
+                              <?php endif; ?>
                             </ul>
                         </li>
                     <?php if ($this->AuthUser->hasRole(ROLE_ADMIN)): ?>
-                            <li class="<?php echo $this->Common->getLinkActiveClass('Users', ['index', 'add']); ?>">
+                            <li class="">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-user-secret"></i> Users <i class="fa fa-chevron-down"></i></a>
                             <ul class="dropdown-menu">
-                              <li class="<?php echo $this->Common->getLinkActiveClass('Users', 'index'); ?>">
+                              <li class="">
                                   <a href="<?php echo $this->Url->build(['controller' => 'Users', 'action' => 'index']); ?>">List Users</a>
                               </li>
-                              <li class="<?php echo $this->Common->getLinkActiveClass('Users', 'add'); ?>">
+                              <li class="">
                                   <a href="<?php echo $this->Url->build(['controller' => 'Users', 'action' => 'add']); ?>">Add New User</a>
                               </li>
                             </ul>

@@ -5,6 +5,9 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Event\Event;
+use ArrayObject;
+use Cake\I18n\Time;
 
 /**
  * Appointments Model
@@ -41,8 +44,9 @@ class AppointmentsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'user_id',
+        $this->belongsTo('Patients', [
+            'foreignKey' => 'patient_id',
+            'className' => 'Users',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Doctors', [
@@ -65,17 +69,8 @@ class AppointmentsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->dateTime('appt_date')
-            ->allowEmpty('appt_date');
-
-        $validator
-            ->boolean('is_confirmed')
-            ->requirePresence('is_confirmed', 'create')
-            ->notEmpty('is_confirmed');
-
-        $validator
-            ->integer('created_by')
-            ->allowEmpty('created_by');
+            ->add('appt_date', 'validDate', ['rule' => ['date', 'mdy'], 'message' => __('Invalid Appointment date format')])
+            ->notEmpty('appt_date');
 
         return $validator;
     }
@@ -89,9 +84,14 @@ class AppointmentsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['user_id'], 'Users'));
-        $rules->add($rules->existsIn(['doctor_id'], 'Doctors'));
-
         return $rules;
+    }
+    
+    // beforeMarshal
+    public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
+    {
+        if (!empty($data['appt_date'])){
+             $data['appt_date'] =  Time::parseDateTime($data['appt_date'], 'MM/dd/yyyy h:mm a');
+        }
     }
 }
