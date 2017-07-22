@@ -22,7 +22,7 @@ if (!empty($indexColumns)) {
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3><CakePHPBakeOpenTag= __('<?= $pluralHumanName ?>') CakePHPBakeCloseTag> List<small> (list of all <CakePHPBakeOpenTag= __('<?= $pluralHumanName ?>') CakePHPBakeCloseTag>) </small></h3>
+        <h3><CakePHPBakeOpenTag= __('<?= $pluralHumanName ?>') CakePHPBakeCloseTag><small> (list of all <CakePHPBakeOpenTag= __('<?= $pluralHumanName ?>') CakePHPBakeCloseTag>) </small></h3>
       </div>
     </div>
     <div class="clearfix"></div>

@@ -31,7 +31,7 @@ if (isset($modelObject) && $modelObject->behaviors()->has('Tree')) {
                               <a class="btn btn-primary" href="<CakePHPBakeOpenTagphp echo $this->Url->build(['action' => 'index']); CakePHPBakeCloseTag>">
                                 <i class="fa fa fa-reply"></i> <?= $pluralHumanName ?> Lists</a>
                           </div>
-                        <CakePHPBakeOpenTagphp if (!$<?= $singularVar ?>->isNew() && $this->AuthUser->isAdmin()): CakePHPBakeCloseTag>
+                        <CakePHPBakeOpenTagphp if (!$<?= $singularVar ?>->isNew() && $this->AuthUser->hasRole(ROLE_ADMIN)): CakePHPBakeCloseTag>
                             <div class="btn-group"> 
                                 <CakePHPBakeOpenTag= $this->Form->postLink('<i class="fa fa-trash-o"></i> '. __('Delete'), ['action' => 'delete', $<?= $singularVar ?>->id],
                                   ['confirm' => __('Are you sure you want to delete # {0}?', $<?= $singularVar ?>->id),
