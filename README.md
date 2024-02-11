@@ -1,4 +1,4 @@
-# Test Project (Doctor, Patient Appointment Application)
+# Project (Doctor, Patient Appointment Application)
 
 PHP based web application built with  [CakePHP](http://www.cakephp.org) framework version 3.x
 
